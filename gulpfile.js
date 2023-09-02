@@ -1,7 +1,8 @@
 const {
     src,
     dest,
-    watch
+    watch,
+    parallel
 } = require('gulp');
 
 const scss = require('gulp-sass')(require('sass'));
@@ -45,3 +46,5 @@ exports.styles = styles;
 exports.scripts = scripts;
 exports.watching = watching;
 exports.browsersync = browsersync;
+
+exports.default = parallel(styles, scripts, browsersync, watching);
