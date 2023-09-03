@@ -9,9 +9,13 @@ const scss = require('gulp-sass')(require('sass'));
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify-es').default;
 const browserSync = require('browser-sync').create();
+const autoprefixer = require('gulp-autoprefixer');
 
 function styles() {
     return src('app/scss/style.scss')
+        .pipe(autoprefixer({
+            overrideBrowserslist: ['last 10 version']
+        }))
         .pipe(concat('style.min.css'))
         .pipe(scss({
             outputStyle: 'compressed'
@@ -21,7 +25,11 @@ function styles() {
 }
 
 function scripts() {
-    return src('app/js/main.js')
+    return src([
+            // 'node_modules/swiper/swiper-bundle.js',
+            'app/js/*.js',
+            '!app/js/main.min.js'
+        ])
         .pipe(concat('main.min.js'))
         .pipe(uglify())
         .pipe(dest('app/js'))
@@ -30,7 +38,7 @@ function scripts() {
 
 function watching() {
     watch(['app/scss/style.scss'], styles)
-    watch(['app/js/main.js'], scripts)
+    watch(['app/js/*.js'], scripts)
     watch(['app/**/*.html']).on('change', browserSync.reload)
 }
 
@@ -42,9 +50,20 @@ function browsersync() {
     });
 }
 
+function build() {
+    return src([
+        'app/css/style.min.css',
+        'app/js/main.min.js',
+        'app/**/*html'
+    ], {
+        base: 'app' //save basic structure
+    })
+    .pipe(dest('dist'))
+}
 exports.styles = styles;
 exports.scripts = scripts;
 exports.watching = watching;
 exports.browsersync = browsersync;
+exports.build = build;
 
 exports.default = parallel(styles, scripts, browsersync, watching);
