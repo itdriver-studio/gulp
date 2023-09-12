@@ -17,6 +17,8 @@ const webp = require('gulp-webp');
 const imagemin = require('gulp-imagemin');
 const newer = require('gulp-newer');
 const svgSprite = require('gulp-svg-sprite');
+const fonter = require('gulp-fonter');
+const ttf2woff2 = require('gulp-ttf2woff2');
 
 function sprite() {
     return src('app/images/dist/*.svg')
@@ -109,4 +111,4 @@ exports.images = images;
 exports.sprite = sprite;
 
 exports.build = series(cleanDist, building);
-exports.default = parallel(styles, scripts, watching);
+exports.default = parallel(styles, scripts, images, watching);

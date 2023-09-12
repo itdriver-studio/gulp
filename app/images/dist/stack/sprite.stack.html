@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>SVG stack preview | svg-sprite</title>
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                color: #666;
+                background: #fafafa;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1em;
+                line-height: 1.4;
+            }
+
+            header {
+                display: block;
+                padding: 3em 3em 2em;
+                background-color: #fff;
+            }
+
+            header p {
+                margin: 2em 0 0;
+            }
+
+            section {
+                border-top: 1px solid #eee;
+                padding: 2em 3em 0;
+            }
+
+            section ul {
+                margin: 0;
+                padding: 0;
+            }
+
+            section li {
+                display: inline-block;
+                background-color: #fff;
+                position: relative;
+                margin: 0 2em 2em 0;
+                vertical-align: top;
+                border: 1px solid #ccc;
+                padding: 1em 1em 3em;
+                cursor: default;
+            }
+
+            .icon-box {
+                margin: 0;
+                width: 144px;
+                height: 144px;
+                position: relative;
+                background: #ccc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Cpath fill='%23fff' d='M6 0h6v6H6zM0 6h6v6H0z'/%3E%3C/svg%3E") top left repeat;
+                border: 1px solid #ccc;
+                display: table-cell;
+                vertical-align: middle;
+                text-align: center;
+            }
+
+            .icon {
+                display: inline-block;
+            }
+
+            h1 {
+                margin-top: 0;
+            }
+
+            h2 {
+                margin: 0;
+                padding: 0;
+                font-size: 1em;
+                font-weight: 400;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                position: absolute;
+                left: 1em;
+                right: 1em;
+                bottom: 1em;
+            }
+
+            footer {
+                display: block;
+                margin: 0;
+                padding: 0 3em 3em;
+            }
+
+            footer p {
+                margin: 0;
+                font-size: .7em;
+            }
+
+            footer a {
+                color: #0f7595;
+                margin-left: 0;
+            }
+        </style>
+
+<!--
+Sprite shape dimensions
+====================================================================================================
+You will need to set the sprite shape dimensions via CSS when you use them as stack SVGs, otherwise
+they would become a huge 100% in size. You may use the following dimension classes for doing so.
+They might well be outsourced to an external stylesheet of course.
+-->
+
+<style>
+ .svg-1770788-dims { width: 1421.333px; height: 1706.667px; }
+ .svg-1801287-dims { width: 1705.333px; height: 1706.667px; }
+ .svg-306277-dims { width: 1706.667px; height: 1642.667px; }
+ .svg-Sitting-Dog-Silhouette-dims { width: 1000px; height: 1000px; }
+ .svg-cloud-moon-dims { width: 800px; height: 800px; }
+ .svg-kiwi-dims { width: 612px; height: 502.174px; }
+</style>
+
+<!--
+====================================================================================================
+-->
+
+    </head>
+    <body>
+        <header>
+            <h1>SVG stack preview</h1>
+            <p>This preview features an SVG stack. Please have a look at the HTML source for further details and be aware of the following constraints:</p>
+            <ul>
+                <li>Your browser has to <a href="https://caniuse.com/svg-fragment" target="_blank" rel="noopener noreferrer">support SVG fragment identifiers</a> for SVG stacks to work.</li>
+                <li>Support for SVG fragment identifiers hasn't always been that decent. For older browsers you will have to use some prolyfill like <a href="https://github.com/preciousforever/SVG-Stacker/blob/master/fixsvgstack.jquery.js" target="_blank" rel="noopener noreferrer">fixsvgstack.jquery.js</a>.</li>
+            </ul>
+        </header>
+        <section>
+
+<!--
+SVG stack
+====================================================================================================
+These SVG images make use of fragment identifiers (IDs) to reference certain portions of the
+external sprite. By default, all shapes inside the sprite are hidden by CSS. The `:target` pseudo
+selector is used to show the very shape that is referenced by the fragment identifier.
+-->
+
+            <ul>
+
+             <li title="1770788">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#1770788" class="svg-1770788-dims" alt="1770788">
+                    </div>
+                    <h2>1770788, </h2>
+                </li>
+             <li title="1801287">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#1801287" class="svg-1801287-dims" alt="1801287">
+                    </div>
+                    <h2>1801287, </h2>
+                </li>
+             <li title="306277">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#306277" class="svg-306277-dims" alt="306277">
+                    </div>
+                    <h2>306277, </h2>
+                </li>
+             <li title="Sitting-Dog-Silhouette">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#Sitting-Dog-Silhouette" class="svg-Sitting-Dog-Silhouette-dims" alt="Sitting-Dog-Silhouette">
+                    </div>
+                    <h2>Sitting-Dog-Silhouette, </h2>
+                </li>
+             <li title="cloud-moon">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#cloud-moon" class="svg-cloud-moon-dims" alt="cloud-moon">
+                    </div>
+                    <h2>cloud-moon, </h2>
+                </li>
+             <li title="kiwi">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#kiwi" class="svg-kiwi-dims" alt="kiwi">
+                    </div>
+                    <h2>kiwi, </h2>
+                </li>
+         </ul>
+
+<!--
+====================================================================================================
+-->
+
+        </section>
+        <footer>
+            <p>Generated at Tue, 12 Sep 2023 19:30:27 GMT by <a href="https://github.com/svg-sprite/svg-sprite" target="_blank" rel="noopener noreferrer">svg-sprite</a>.</p>
+        </footer>
+    </body>
+</html>
