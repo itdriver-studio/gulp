@@ -16,6 +16,20 @@ const avif = require('gulp-avif');
 const webp = require('gulp-webp');
 const imagemin = require('gulp-imagemin');
 const newer = require('gulp-newer');
+const svgSprite = require('gulp-svg-sprite');
+
+function sprite() {
+    return src('app/images/dist/*.svg')
+        .pipe(svgSprite({
+            mode: {
+                stack: {
+                    sprite: '../sprite.svg',
+                    example: true
+                }
+            }
+        }))
+        .pipe(dest('app/images/dist'))
+}
 
 function images() {
     return src(['app/images/src/*.*', '!app/images/src/*.svg'])
@@ -92,6 +106,7 @@ exports.styles = styles;
 exports.scripts = scripts;
 exports.watching = watching;
 exports.images = images;
+exports.sprite = sprite;
 
 exports.build = series(cleanDist, building);
 exports.default = parallel(styles, scripts, watching);
