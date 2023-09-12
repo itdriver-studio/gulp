@@ -18,7 +18,7 @@ const imagemin = require('gulp-imagemin');
 const newer = require('gulp-newer');
 
 function images() {
-    return src(['app/images/src/*.*', '!app/images/arc/*.svg'])
+    return src(['app/images/src/*.*', '!app/images/src/*.svg'])
         .pipe(newer('app/images/dist'))
         .pipe(avif({
             quality: 50
@@ -66,7 +66,8 @@ function watching() {
         }
     });
     watch(['app/scss/style.scss'], styles)
-    watch(['app/js/*.js'], scripts)
+    watch(['app/images/src'], images)
+    watch(['app/js/*.js', '!app/js/main.min.js'], scripts)
     watch(['app/**/*.html']).on('change', browserSync.reload)
 }
 
@@ -79,6 +80,7 @@ function cleanDist() {
 function building() {
     return src([
             'app/css/style.min.css',
+            'app/images/dist/*.*',
             'app/js/main.min.js',
             'app/**/*html'
         ], {
