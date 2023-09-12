@@ -20,6 +20,16 @@ const svgSprite = require('gulp-svg-sprite');
 const fonter = require('gulp-fonter');
 const ttf2woff2 = require('gulp-ttf2woff2');
 
+function fonts() {
+    return src('app/fonts/src/*.*')
+        .pipe(fonter({
+            formats: ['woff', 'ttf']
+        }))
+        .pipe(src('app/fonts/*.ttf'))
+        .pipe(ttf2woff2())
+        .pipe(dest('app/fonts/'))
+}
+
 function sprite() {
     return src('app/images/dist/*.svg')
         .pipe(svgSprite({
@@ -97,6 +107,9 @@ function building() {
     return src([
             'app/css/style.min.css',
             'app/images/dist/*.*',
+            '!app/images/dist/*.svg',
+            'app/images/dist/sprite.svg',
+            'app/fonts/*.*',
             'app/js/main.min.js',
             'app/**/*html'
         ], {
@@ -109,6 +122,8 @@ exports.scripts = scripts;
 exports.watching = watching;
 exports.images = images;
 exports.sprite = sprite;
+exports.fonts = fonts;
+exports.building = building;
 
 exports.build = series(cleanDist, building);
 exports.default = parallel(styles, scripts, images, watching);
